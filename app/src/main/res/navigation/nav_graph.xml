@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/trendingMoviesFragment">
+
+    <fragment
+        android:id="@+id/trendingMoviesFragment"
+        android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.trendingmovies.TrendingMoviesFragment"
+        android:label="TrendingMoviesFragment" />
+    <fragment
+        android:id="@+id/popularMoviesFragment"
+        android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.popularmovies.PopularMoviesFragment"
+        android:label="PopularMoviesFragment" />
+    <fragment
+        android:id="@+id/searchMoviesFragment"
+        android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.SearchMoviesFragment"
+        android:label="SearchMoviesFragment" />
+    <fragment
+        android:id="@+id/topRatedMoviesFragment"
+        android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.topratemovies.TopRatedMoviesFragment"
+        android:label="TopRatedMoviesFragment" />
+    <fragment
+        android:id="@+id/upcomingMoviesFragment"
+        android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.upcomingmovies.UpcomingMoviesFragment"
+        android:label="UpcomingMoviesFragment" />
+</navigation>

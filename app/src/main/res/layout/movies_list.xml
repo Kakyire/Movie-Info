@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="10dp"
+    android:elevation="5dp"
+    android:padding="5dp"
+    app:cardCornerRadius="3dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/movie_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:contentDescription="@string/movie_thumbnail"
+            android:padding="5dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvMovieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/movie_title"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp"
+            app:layout_constraintTop_toBottomOf="@id/movie_thumbnail" />
+
+        <TextView
+            android:id="@+id/tvReleaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="5dp"
+            android:paddingStart="0dp"
+            android:text="@string/release_date"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
+
+        <TextView
+            android:id="@+id/tvMovieLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/movie_language"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@id/tvReleaseDate"
+            app:layout_constraintTop_toBottomOf="@id/tvReleaseDate" />
+
+        <TextView
+            android:id="@+id/tvMovieRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:paddingEnd="0dp"
+            android:text="@string/movie_rate"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
+
+        <TextView
+            android:id="@+id/tvMoviePopularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:padding="5dp"
+            android:text="@string/movie_popularity"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/tvMovieRating"
+            app:layout_constraintTop_toBottomOf="@id/tvMovieRating" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
