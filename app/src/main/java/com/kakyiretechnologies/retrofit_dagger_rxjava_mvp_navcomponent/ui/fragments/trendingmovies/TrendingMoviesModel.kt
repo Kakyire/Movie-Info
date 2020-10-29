@@ -1,5 +1,6 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.trendingmovies
 
+import android.util.Log
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResponse
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.network.ApiInterface
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.BaseContract
@@ -12,7 +13,7 @@ import javax.inject.Inject
 class TrendingMoviesModel @Inject constructor(private val apiInterface: ApiInterface) :
     TrendingMoviesContract.Model {
 
-
+    private  val TAG = "TrendingMoviesModel"
     override fun getMoviesFromServer(pageNo: Int, presenter: BaseContract.Presenter) {
 
         presenter.onLoading()
@@ -33,6 +34,7 @@ class TrendingMoviesModel @Inject constructor(private val apiInterface: ApiInter
                 }
 
                 override fun onComplete() {
+                    Log.d(TAG, "onComplete: ")
                 }
             })
     }
