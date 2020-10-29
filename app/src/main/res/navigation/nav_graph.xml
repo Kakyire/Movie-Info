@@ -12,10 +12,6 @@
         android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.popularmovies.PopularMoviesFragment"
         android:label="PopularMoviesFragment" />
     <fragment
-        android:id="@+id/searchMoviesFragment"
-        android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.SearchMoviesFragment"
-        android:label="SearchMoviesFragment" />
-    <fragment
         android:id="@+id/topRatedMoviesFragment"
         android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.topratemovies.TopRatedMoviesFragment"
         android:label="TopRatedMoviesFragment" />

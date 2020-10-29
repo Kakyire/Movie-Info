@@ -1,21 +1,13 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.upcomingmovies
 
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResponse
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.BaseContract
 
 interface UpcomingMoviesContract {
 
-    interface View {
+    interface Model : BaseContract.Model
 
-        fun showProgress()
-        fun hideProgress()
-        fun onFailed(t: Throwable)
-        fun onLoaded(movieResponse: MovieResponse)
+    interface View : BaseContract.BaseView
 
-    }
-
-    interface Presenter {
-        fun getMovies(pageNo: Int)
-        fun onDestroy()
-
-    }
+    interface Presenter : BaseContract.Presenter
 }

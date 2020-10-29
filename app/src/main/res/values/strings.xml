@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Retrofit-Dagger-RxJava-MVP-NavComponent</string>
+    <string name="app_name">Movie Info</string>
     <string name="trending">Trending</string>
     <string name="popular">Popular</string>
     <string name="top_rated">Top Rated</string>
@@ -11,4 +11,5 @@
     <string name="release_date">Release date</string>
     <string name="movie_language">Movie language</string>
     <string name="movie_popularity">Movie popularity</string>
+    <string name="overview">Overview</string>
 </resources>

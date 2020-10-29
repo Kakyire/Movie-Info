@@ -1,10 +1,15 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model
 
-import java.io.Serializable
+
+import com.google.gson.annotations.SerializedName
 
 data class MovieResponse(
+    @SerializedName("page")
     val page: Int,
-    val results: List<Result>,
+    @SerializedName("results")
+    val movieResults: List<MovieResults>,
+    @SerializedName("total_pages")
     val totalPages: Int,
+    @SerializedName("total_results")
     val totalResults: Int
-):Serializable
+)

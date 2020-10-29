@@ -11,7 +11,7 @@
     android:padding="5dp"
     app:cardCornerRadius="3dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:contentDescription="@string/movie_thumbnail"
-            android:padding="5dp"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,56 +27,42 @@
             android:id="@+id/tvMovieTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/movie_thumbnail"
             android:layout_margin="5dp"
+            android:maxLines="2"
             android:text="@string/movie_title"
             android:textColor="@color/colorAccent"
-            android:textSize="30sp"
+            android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@id/movie_thumbnail" />
+
+        <TextView
+            android:id="@+id/tvOverview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvMovieTitle"
+            android:layout_margin="5dp"
+            android:maxLines="3"
+            android:text="@string/overview"
+            android:textColor="@color/textColor"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tvReleaseDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="5dp"
+            android:layout_below="@id/tvOverview"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp"
             android:paddingStart="0dp"
+            android:paddingEnd="5dp"
             android:text="@string/release_date"
-            android:textSize="20sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
+            app:layout_constraintTop_toBottomOf="parent" />
 
-        <TextView
-            android:id="@+id/tvMovieLanguage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="@string/movie_language"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@id/tvReleaseDate"
-            app:layout_constraintTop_toBottomOf="@id/tvReleaseDate" />
 
-        <TextView
-            android:id="@+id/tvMovieRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="5dp"
-            android:paddingEnd="0dp"
-            android:text="@string/movie_rate"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
-
-        <TextView
-            android:id="@+id/tvMoviePopularity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
-            android:padding="5dp"
-            android:text="@string/movie_popularity"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@id/tvMovieRating"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieRating" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 
 </androidx.cardview.widget.CardView>

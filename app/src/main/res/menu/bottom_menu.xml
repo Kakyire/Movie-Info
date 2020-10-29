@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/trendingMoviesFragment"
         android:icon="@drawable/ic_trending"
-        android:title="@string/trending" />
+        android:title="@string/trending"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/popularMoviesFragment"
         android:icon="@drawable/ic_popular"
-        android:title="@string/popular" />
+        android:title="@string/popular"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/topRatedMoviesFragment"
         android:icon="@drawable/ic_rated"
-        android:title="@string/top_rated" />
+        android:title="@string/top_rated"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/upcomingMoviesFragment"
         android:icon="@drawable/ic_upcoming"
-        android:title="@string/upcoming" />
-    <item
-        android:id="@+id/searchMoviesFragment"
-        android:icon="@drawable/ic_search"
-        android:title="@string/search" />
+        android:title="@string/upcoming"
+        app:showAsAction="always" />
 </menu>
