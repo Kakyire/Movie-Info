@@ -36,5 +36,9 @@ class TrendingMoviesPresenter @Inject constructor(
         model.getMoviesFromServer(pageNo, this)
     }
 
+    override fun onDestroy() {
+        view = null
+    }
+
 
 }

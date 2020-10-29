@@ -1,7 +1,6 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui
 
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.upcomingmovies.UpcomingMoviesContract
 
 interface BaseContract {
 
@@ -18,6 +17,7 @@ interface BaseContract {
         fun onLoading()
         fun getMovies()
         fun loadMoreMovies(pageNo: Int)
+        fun onDestroy()
     }
 
     interface Model {

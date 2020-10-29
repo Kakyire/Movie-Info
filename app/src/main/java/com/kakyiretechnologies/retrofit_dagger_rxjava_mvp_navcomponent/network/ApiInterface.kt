@@ -1,7 +1,6 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.network
 
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResponse
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.API
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.API_KEY
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.POPULAR_MOVIES
@@ -9,7 +8,6 @@ import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Con
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.TRENDING_MOVIES
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.UPCOMING_MOVIES
 import io.reactivex.Observable
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -40,9 +38,5 @@ interface ApiInterface {
         @Query(API) key: String?= API_KEY
     ): Observable<MovieResponse>
 
-    @GET(POPULAR_MOVIES)
-    fun movies( @Query("page") pageNo: Int,
-                @Query(API) key: String
-    ):Call<MovieResponse>
 
 }

@@ -9,14 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.R
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.adapters.MovieAdapter
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.component.ActivityComponent
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.component.DaggerActivityComponent
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.module.FragmentContextModule
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.module.AdapterModule
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.module.ViewModule
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.BaseContract
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.BaseApp
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.ActivityComponentImple.implementComponent
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.ClickListener
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.ERROR
 import kotlinx.android.synthetic.main.trending_movies_fragment.*
@@ -37,21 +31,17 @@ class TrendingMoviesFragment : Fragment(R.layout.trending_movies_fragment),
     lateinit var movieAdapter: MovieAdapter
 
 
-    private lateinit var component: ActivityComponent
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        component = DaggerActivityComponent.builder()
-            .fragmentContextModule(FragmentContextModule(this))
-            .adapterModule(context?.let { AdapterModule(this, it) })
-            .viewModule(ViewModule(this))
-            .applicationComponent((context?.applicationContext as BaseApp).getApplicationComponent())
-            .build()
-        component.inject(this)
-        presenter.getMovies()
+
+        implementComponent(this, this, this)
+            .inject(this)
+
+
         rvTrending.layoutManager = GridLayoutManager(context, 2)
         rvTrending.adapter = movieAdapter
-
+        presenter.getMovies()
         scrollListener()
     }
 
@@ -81,6 +71,11 @@ class TrendingMoviesFragment : Fragment(R.layout.trending_movies_fragment),
     override fun onClick(position: Int) {
         Log.d(TAG, "onClick: ${movieResults[position].title}")
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 
 

@@ -16,7 +16,6 @@ class TrendingMoviesModel @Inject constructor(private val apiInterface: ApiInter
     private  val TAG = "TrendingMoviesModel"
     override fun getMoviesFromServer(pageNo: Int, presenter: BaseContract.Presenter) {
 
-        presenter.onLoading()
         apiInterface.trendingMovies(pageNo)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
