@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.R
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.adapters.MovieAdapter
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.activities.MainActivity
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.ActivityComponentImple.implementComponent
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.ClickListener
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.ERROR
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.NavigateToDetails.navigate
 import kotlinx.android.synthetic.main.popular_movies_fragment.*
 import javax.inject.Inject
 
@@ -27,18 +29,19 @@ class PopularMoviesFragment : Fragment(R.layout.popular_movies_fragment),
 
     private var pageNo = 1
     private var isScrolling = true
-    private val movieResults: MutableList<MovieResults> = ArrayList()
+    private val movieResults: MutableList<Any> = ArrayList()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        implementComponent(this, this, this)
+        implementComponent(activity as MainActivity, this, this)
             .inject(this)
 
         rvPopular.layoutManager = GridLayoutManager(context, 2)
         rvPopular.adapter = movieAdapter
         presenter.getMovies()
         scrollListener()
+        refreshOnSwipe()
     }
 
     //when the user reach the last item in the recyclerview load more
@@ -63,6 +66,15 @@ class PopularMoviesFragment : Fragment(R.layout.popular_movies_fragment),
     }
 
 
+    //refresh content when user swipe down
+    private fun refreshOnSwipe() {
+        srPopular.setOnRefreshListener {
+            srPopular.isRefreshing = false
+            presenter.getMovies()
+        }
+
+    }
+
     override fun showProgress() {
         pbPopular.visibility = View.VISIBLE
     }
@@ -75,7 +87,7 @@ class PopularMoviesFragment : Fragment(R.layout.popular_movies_fragment),
         Toast.makeText(context, ERROR, Toast.LENGTH_SHORT).show()
     }
 
-    override fun loadRecyclerView(results: List<MovieResults>) {
+    override fun loadRecyclerView(results: List<Any>) {
         movieAdapter.loadData(results)
         movieResults.addAll(results)
         isScrolling = true
@@ -85,7 +97,9 @@ class PopularMoviesFragment : Fragment(R.layout.popular_movies_fragment),
     }
 
     override fun onClick(position: Int) {
-        val id = movieResults[position].id
+        val results = movieResults[position] as MovieResults
+        navigate(context, results)
+
     }
 
     override fun onDestroy() {

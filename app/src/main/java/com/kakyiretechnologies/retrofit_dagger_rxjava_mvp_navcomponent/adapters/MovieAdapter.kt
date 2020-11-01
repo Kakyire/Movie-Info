@@ -19,7 +19,7 @@ class MovieAdapter @Inject constructor(
     private val clickListener: ClickListener
 ) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
-    private val list: MutableList<MovieResults> = ArrayList()
+    private val list: MutableList<Any> = ArrayList()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -31,7 +31,7 @@ class MovieAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: MovieAdapter.ViewHolder, position: Int) {
 
-        val movieResults = list[position]
+        val movieResults = list[position] as MovieResults
 
         holder.itemView.tvOverview.text = movieResults.overview
         holder.itemView.tvReleaseDate.text = movieResults.releaseDate
@@ -40,7 +40,7 @@ class MovieAdapter @Inject constructor(
         val image = "$IMAGE_URL${movieResults.posterPath}"
         loadImage(context, holder.itemView.movie_thumbnail, image)
 
-        holder.itemView.setOnClickListener{clickListener.onClick(position)}
+        holder.itemView.setOnClickListener { clickListener.onClick(position) }
 
     }
 
@@ -49,7 +49,8 @@ class MovieAdapter @Inject constructor(
     }
 
 
-    fun loadData(movieResults: List<MovieResults>) {
+    fun loadData(movieResults: List<Any>) {
+
         list.addAll(movieResults)
         notifyDataSetChanged()
     }

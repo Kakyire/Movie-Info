@@ -1,15 +1,14 @@
-package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.trendingmovies
+package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.activities.detailsactivity
 
 import javax.inject.Inject
 
-class TrendingMoviesPresenter @Inject constructor(
-    private var view: TrendingMoviesContract.View?
-) : TrendingMoviesContract.Presenter {
+class DetailsActivityPresenter @Inject constructor(private var view: DetailsActivityContract.View?) :
+    DetailsActivityContract.Presenter {
+
     @Inject
-    lateinit var model: TrendingMoviesModel
+    lateinit var model: DetailsActivityModel
 
     override fun onSuccess(results: List<Any>) {
-
         view?.apply {
             hideProgress()
             loadRecyclerView(results)
@@ -28,7 +27,10 @@ class TrendingMoviesPresenter @Inject constructor(
     }
 
     override fun getMovies() {
-        model.getMoviesFromServer(1, this)
+        /*
+        we won't call this function instead loadMoreMovies function
+         because we have to pass argument to load the recommendation movies
+        */
     }
 
     override fun loadMoreMovies(pageNo: Int) {
@@ -38,6 +40,4 @@ class TrendingMoviesPresenter @Inject constructor(
     override fun onDestroy() {
         view = null
     }
-
-
 }

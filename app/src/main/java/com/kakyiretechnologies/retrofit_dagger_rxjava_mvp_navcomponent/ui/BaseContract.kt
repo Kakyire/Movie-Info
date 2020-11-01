@@ -1,18 +1,16 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui
 
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
-
 interface BaseContract {
 
     interface BaseView {
         fun showProgress()
         fun hideProgress()
         fun onFailed(t: Throwable)
-        fun loadRecyclerView(results: List<MovieResults>)
+        fun loadRecyclerView(results: List<Any>)
     }
 
     interface Presenter {
-        fun onSuccess(results: List<MovieResults>)
+        fun onSuccess(results: List<Any>)
         fun onError(t: Throwable)
         fun onLoading()
         fun getMovies()

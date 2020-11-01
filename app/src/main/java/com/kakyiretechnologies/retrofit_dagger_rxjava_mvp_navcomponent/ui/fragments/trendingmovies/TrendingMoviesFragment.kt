@@ -1,7 +1,6 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.trendingmovies
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -10,9 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.R
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.adapters.MovieAdapter
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.activities.MainActivity
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.ActivityComponentImple.implementComponent
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.ClickListener
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.ERROR
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.NavigateToDetails.navigate
 import kotlinx.android.synthetic.main.trending_movies_fragment.*
 import javax.inject.Inject
 
@@ -20,7 +21,7 @@ class TrendingMoviesFragment : Fragment(R.layout.trending_movies_fragment),
     TrendingMoviesContract.View, ClickListener {
     private val TAG = "Results"
 
-    private var movieResults: MutableList<MovieResults> = ArrayList()
+    private var movieResults: MutableList<Any> = ArrayList()
     private var isScrolling = true
     private var pageNo = 1
 
@@ -35,7 +36,7 @@ class TrendingMoviesFragment : Fragment(R.layout.trending_movies_fragment),
         super.onViewCreated(view, savedInstanceState)
 
 
-        implementComponent(this, this, this)
+        implementComponent(activity as MainActivity, this, this)
             .inject(this)
 
 
@@ -43,6 +44,7 @@ class TrendingMoviesFragment : Fragment(R.layout.trending_movies_fragment),
         rvTrending.adapter = movieAdapter
         presenter.getMovies()
         scrollListener()
+        refreshOnSwipe()
     }
 
 
@@ -58,7 +60,7 @@ class TrendingMoviesFragment : Fragment(R.layout.trending_movies_fragment),
         Toast.makeText(context, ERROR, Toast.LENGTH_SHORT).show()
     }
 
-    override fun loadRecyclerView(results: List<MovieResults>) {
+    override fun loadRecyclerView(results: List<Any>) {
         movieAdapter.loadData(results)
         movieResults.addAll(results)
 
@@ -69,8 +71,8 @@ class TrendingMoviesFragment : Fragment(R.layout.trending_movies_fragment),
     }
 
     override fun onClick(position: Int) {
-        Log.d(TAG, "onClick: ${movieResults[position].title}")
-
+        val results = movieResults[position] as MovieResults
+        navigate(context, results)
     }
 
     override fun onDestroy() {
@@ -101,5 +103,15 @@ class TrendingMoviesFragment : Fragment(R.layout.trending_movies_fragment),
         })
 
     }
+
+    //refresh content when user swipe down
+    private fun refreshOnSwipe() {
+        srTrending.setOnRefreshListener {
+            srTrending.isRefreshing = false
+            presenter.getMovies()
+
+        }
+    }
+
 
 }

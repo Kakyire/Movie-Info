@@ -2,7 +2,7 @@ package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.modul
 
 import android.content.Context
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.adapters.MovieAdapter
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.context.ActivityContext
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.adapters.RecommendationsAdapter
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.scope.ActivityScope
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.ClickListener
 import dagger.Module
@@ -24,5 +24,11 @@ class AdapterModule(
     @ActivityScope
     fun provideMovieAdapter(): MovieAdapter {
         return MovieAdapter(context, clickListener)
+    }
+
+    @Provides
+    @ActivityScope
+    fun provideRecommendationAdapter(): RecommendationsAdapter {
+        return RecommendationsAdapter(context, clickListener)
     }
 }

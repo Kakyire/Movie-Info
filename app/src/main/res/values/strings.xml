@@ -12,4 +12,8 @@
     <string name="movie_language">Movie language</string>
     <string name="movie_popularity">Movie popularity</string>
     <string name="overview">Overview</string>
+    <string name="title">Title</string>
+    <string name="movie_overview">Movie Overview</string>
+    <string name="cast">Cast</string>
+    <string name="recommendation">Recommended movies</string>
 </resources>
