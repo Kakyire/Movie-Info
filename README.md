@@ -1,4 +1,4 @@
-# RetrofitDaggerRxJavaMVP-With-NavComponent
+# Movies Updates
 Simple project to show how to implement the following libraries: Retrofit, Dagger2, RxJava and Jetpack Navigation component with MVP architecture pattern in one project
 
 ### [Download it here](https://github.com/Kakyire/RetrofitDaggerRxJavaMVP-With-NavComponent/releases/download/v1.0/Movies.apk)
