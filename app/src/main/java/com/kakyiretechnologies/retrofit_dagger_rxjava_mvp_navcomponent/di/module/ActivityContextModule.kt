@@ -5,7 +5,7 @@ import android.content.Context
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.context.ActivityContext
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.scope.ActivityScope
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.activities.MainActivity
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.activities.detailsactivity.DetailsActivity
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.detailsfragment.DetailsFragment
 import dagger.Module
 import dagger.Provides
 
@@ -24,11 +24,11 @@ class ActivityContextModule(
     }
 
 
-    @ActivityScope
-    @Provides
-    fun provideDetailsActivity(): DetailsActivity {
-        return activity as DetailsActivity
-    }
+//    @ActivityScope
+//    @Provides
+//    fun provideDetailsActivity(): DetailsFragment {
+//        return activity as DetailsFragment
+//    }
 
     @ActivityScope
     @Provides

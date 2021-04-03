@@ -1,14 +1,15 @@
-package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.activities.detailsactivity
+package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.detailsfragment
 
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
 import javax.inject.Inject
 
-class DetailsActivityPresenter @Inject constructor(private var view: DetailsActivityContract.View?) :
-    DetailsActivityContract.Presenter {
+class DetailsFragmentPresenter @Inject constructor(private var view: DetailsFragmentContract.View?) :
+    DetailsFragmentContract.Presenter {
 
     @Inject
-    lateinit var model: DetailsActivityModel
+    lateinit var model: DetailsFragmentModel
 
-    override fun onSuccess(results: List<Any>) {
+    override fun onSuccess(results: List<MovieResults>) {
         view?.apply {
             hideProgress()
             loadRecyclerView(results)

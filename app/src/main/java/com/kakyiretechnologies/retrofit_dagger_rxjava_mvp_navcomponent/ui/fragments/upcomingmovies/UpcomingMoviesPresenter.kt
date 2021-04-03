@@ -1,5 +1,6 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.upcomingmovies
 
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
 import javax.inject.Inject
 
 class UpcomingMoviesPresenter @Inject constructor(private var view: UpcomingMoviesContract.View?) :
@@ -8,12 +9,24 @@ class UpcomingMoviesPresenter @Inject constructor(private var view: UpcomingMovi
     @Inject
     lateinit var model: UpcomingMoviesModel
 
-    override fun onSuccess(results: List<Any>) {
-        view?.apply {
-            hideProgress()
-            loadRecyclerView(results)
+    private var mutableList = emptyList<MovieResults>()
+
+    fun loadMovies() {
+        if (mutableList.isNotEmpty() && view != null) {
+            view!!.loadRecyclerView(mutableList)
+        } else {
+            model.getMoviesFromServer(1, this)
         }
     }
+
+    override fun onSuccess(results: List<MovieResults>) {
+        view?.apply {
+            hideProgress()
+            mutableList = results
+//            loadRecyclerView(results)
+        }
+    }
+
 
     override fun onError(t: Throwable) {
         view?.apply {
@@ -27,7 +40,7 @@ class UpcomingMoviesPresenter @Inject constructor(private var view: UpcomingMovi
     }
 
     override fun getMovies() {
-        model.getMoviesFromServer(1, this)
+        loadMovies()
     }
 
     override fun loadMoreMovies(pageNo: Int) {

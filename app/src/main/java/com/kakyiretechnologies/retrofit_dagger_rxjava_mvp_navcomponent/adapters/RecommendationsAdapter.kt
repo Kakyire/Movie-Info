@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.R
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.context.ActivityContext
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.RecommendationResult
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.ClickListener
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.listeners.ClickListener
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.IMAGE_URL
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.LoadImageWithGlide.loadImage
 import kotlinx.android.synthetic.main.recommendations_list.view.*
@@ -21,7 +21,7 @@ class RecommendationsAdapter @Inject constructor(
     RecyclerView.Adapter<RecommendationsAdapter.ViewHolder>() {
 
 
-    private val list: MutableList<Any> = ArrayList()
+    private val list: MutableList<MovieResults> = ArrayList()
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -34,19 +34,19 @@ class RecommendationsAdapter @Inject constructor(
 
     }
 
-    fun loadResults(results: List<Any>) {
+    fun loadResults(results: List<MovieResults>) {
         list.addAll(results)
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val recommendations = list[position] as RecommendationResult
+        val recommendations = list[position]
         holder.itemView.tvRecommendation.text = recommendations.title
         val thumbnail = "$IMAGE_URL${recommendations.posterPath}"
         loadImage(context, holder.itemView.ivRecommendation, thumbnail)
 
-        holder.itemView.setOnClickListener { listener.onClick(position) }
+        holder.itemView.setOnClickListener { listener.onClick(recommendations) }
 
     }
 

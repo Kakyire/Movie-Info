@@ -1,5 +1,6 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.topratemovies
 
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
 import javax.inject.Inject
 
 class TopRatedMoviesPresenter @Inject constructor(private var view: TopRatedMoviesContract.View?) :
@@ -7,7 +8,7 @@ class TopRatedMoviesPresenter @Inject constructor(private var view: TopRatedMovi
 
     @Inject
     lateinit var model: TopRatedMoviesModel
-    override fun onSuccess(results: List<Any>) {
+    override fun onSuccess(results: List<MovieResults>) {
         view?.apply {
             hideProgress()
             loadRecyclerView(results)

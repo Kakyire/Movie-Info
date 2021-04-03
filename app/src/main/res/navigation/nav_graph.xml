@@ -1,22 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/trendingMoviesFragment">
 
     <fragment
         android:id="@+id/trendingMoviesFragment"
         android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.trendingmovies.TrendingMoviesFragment"
-        android:label="TrendingMoviesFragment" />
+        android:label="TrendingMoviesFragment"
+        tools:layout="@layout/trending_movies_fragment">
+        <action
+            android:id="@+id/action_trendingMoviesFragment_to_detailsActivity"
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/detailsFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/popularMoviesFragment"
         android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.popularmovies.PopularMoviesFragment"
-        android:label="PopularMoviesFragment" />
+        android:label="PopularMoviesFragment"
+        tools:layout="@layout/popular_movies_fragment">
+        <action
+            android:id="@+id/action_popularMoviesFragment_to_detailsActivity"
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/detailsFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/topRatedMoviesFragment"
         android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.topratemovies.TopRatedMoviesFragment"
-        android:label="TopRatedMoviesFragment" />
+        android:label="TopRatedMoviesFragment"
+        tools:layout="@layout/toprated_movies_fragment">
+        <action
+            android:id="@+id/action_topRatedMoviesFragment_to_detailsActivity"
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/detailsFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
+
         android:id="@+id/upcomingMoviesFragment"
         android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.upcomingmovies.UpcomingMoviesFragment"
-        android:label="UpcomingMoviesFragment" />
+        android:label="UpcomingMoviesFragment"
+        tools:layout="@layout/upcoming_movies_fragment">
+        <action
+            android:id="@+id/action_upcomingMoviesFragment_to_detailsActivity"
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/detailsFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.detailsfragment.DetailsFragment"
+        android:label="DetailsActivity"
+        tools:layout="@layout/details_fragment">
+        <action
+            android:id="@+id/action_detailFragment_to_detailFragment"
+            app:destination="@+id/detailsFragment"
+            app:popUpTo="@id/detailsFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="detailsFragmentArgs"
+            app:argType="com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults" />
+    </fragment>
 </navigation>

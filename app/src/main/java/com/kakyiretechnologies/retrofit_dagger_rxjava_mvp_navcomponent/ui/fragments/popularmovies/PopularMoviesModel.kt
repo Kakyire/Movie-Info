@@ -4,7 +4,6 @@ import android.util.Log
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResponse
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.network.ApiInterface
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.BaseContract
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.trendingmovies.TrendingMoviesContract
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -12,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class PopularMoviesModel @Inject constructor(private val apiInterface: ApiInterface) :
-    TrendingMoviesContract.Model {
+    PopularMoviesContract.Model {
     private val TAG = "Results"
     override fun getMoviesFromServer(pageNo: Int, presenter: BaseContract.Presenter) {
 

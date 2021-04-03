@@ -1,5 +1,6 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.popularmovies
 
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResults
 import javax.inject.Inject
 
 class PopularMoviesPresenter @Inject constructor(private var view: PopularMoviesContract.View?) :
@@ -9,7 +10,7 @@ class PopularMoviesPresenter @Inject constructor(private var view: PopularMovies
     lateinit var model: PopularMoviesModel
 
 
-    override fun onSuccess(results: List<Any>) {
+    override fun onSuccess(results: List<MovieResults>) {
         view?.apply {
             hideProgress()
             loadRecyclerView(results)
@@ -29,6 +30,10 @@ class PopularMoviesPresenter @Inject constructor(private var view: PopularMovies
 
     override fun getMovies() {
         model.getMoviesFromServer(1, this)
+    }
+
+    private fun loadMovies() {
+        model.getMoviesFromServer(presenter = this)
     }
 
     override fun loadMoreMovies(pageNo: Int) {

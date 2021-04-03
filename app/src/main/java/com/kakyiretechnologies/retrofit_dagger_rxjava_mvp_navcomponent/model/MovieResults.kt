@@ -2,6 +2,7 @@ package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class MovieResults(
     @SerializedName("adult")
@@ -32,4 +33,4 @@ data class MovieResults(
     val voteAverage: Double,
     @SerializedName("vote_count")
     val voteCount: Int
-)
+):Serializable

@@ -2,7 +2,7 @@ package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.modul
 
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.scope.ActivityScope
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.BaseContract
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.activities.detailsactivity.DetailsActivityContract
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.detailsfragment.DetailsFragmentContract
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.popularmovies.PopularMoviesContract
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.topratemovies.TopRatedMoviesContract
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.fragments.trendingmovies.TrendingMoviesContract
@@ -46,8 +46,8 @@ class ViewModule(private val baseView: BaseContract.BaseView) {
 
     @ActivityScope
     @Provides
-    fun provideDetailsActivityView(): DetailsActivityContract.View {
-        return baseView as DetailsActivityContract.View
+    fun provideDetailsActivityView(): DetailsFragmentContract.View {
+        return baseView as DetailsFragmentContract.View
     }
 
 }

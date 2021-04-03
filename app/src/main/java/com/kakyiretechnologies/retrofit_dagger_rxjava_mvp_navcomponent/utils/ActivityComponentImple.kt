@@ -6,6 +6,7 @@ import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.compon
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.module.ActivityContextModule
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.module.AdapterModule
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.di.module.ViewModule
+import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.listeners.ClickListener
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.ui.BaseContract
 
 object ActivityComponentImple {

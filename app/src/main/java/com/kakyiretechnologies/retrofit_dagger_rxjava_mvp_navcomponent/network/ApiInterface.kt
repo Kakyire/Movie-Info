@@ -1,7 +1,6 @@
 package com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.network
 
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.MovieResponse
-import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.model.RecommendationsResponse
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.API
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.API_KEY
 import com.kakyiretechnologies.retrofit_dagger_rxjava_mvp_navcomponent.utils.Constants.MOVIE_RECOMMENDATIONS
@@ -41,10 +40,12 @@ interface ApiInterface {
         @Query(API) key: String? = API_KEY
     ): Observable<MovieResponse>
 
+//    @GET()
+
     @GET(MOVIE_RECOMMENDATIONS)
     fun movieRecommendations(
         @Path("movie_id") movieId: Int, @Query("page") pageNo: Int? = 1,
         @Query(API) key: String? = API_KEY
-    ): Observable<RecommendationsResponse>
+    ): Observable<MovieResponse>
 
 }
